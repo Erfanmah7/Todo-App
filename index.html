@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>erfanmah7</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Todo App | Erfanmah7</h1>
+      <div class="input-button">
+        <input type="text" placeholder="Add Todo ..." id="input-text" />
+        <input type="date" id="input-date" />
+        <button class="button-add">Add</button>
+        <button class="button-edit">Edit</button>
+      </div>
+      <div class="buttons">
+        <div>
+          <button class="button-todo">All</button>
+          <button class="button-todo">Pending</button>
+          <button class="button-todo">Completed</button>
+        </div>
+        <button class="button-todo" id="button-delete-all">Delete All</button>
+      </div>
+    </div>
+
+    <div class="alarm-message"></div>
+
+    <div class="table">
+      <table>
+        <thead>
+          <tr>
+            <th>Task</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+        </tbody>
+      </table>
+    </div>
+    <script src="./js/app.js"></script>
+  </body>
+</html>
