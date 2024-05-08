@@ -5,6 +5,7 @@ const buttonAdd = document.querySelector(".button-add");
 const buttonEdit = document.querySelector(".button-edit");
 const Tbody = document.querySelector("tbody");
 const deleteAll = document.getElementById("button-delete-all");
+const buttonAll = document.querySelectorAll(".button-todo");
 
 let todos = JSON.parse(localStorage.getItem("todos")) || [];
 
@@ -16,14 +17,15 @@ const generatId = () => {
   return (Math.random() * Math.random() * Math.pow(10, 15)).toString();
 };
 
-const displayTbody = () => {
+const displayTbody = (data) => {
+  const todoList = data || todos;
   Tbody.innerHTML = "";
-  if (!todos.length) {
+  if (!todoList.length) {
     Tbody.innerHTML = "<tr><td colspan='4'>No Task</td></tr>";
     return;
   }
 
-  todos.forEach((item) => {
+  todoList.forEach((item) => {
     Tbody.innerHTML += `<tr>
     <td>${item.task}</td>
     <td>${item.date || "No Date"}</td>
@@ -129,7 +131,29 @@ const btneditHandeler = (e) => {
   showAlarm("File edited successfully", "success");
 };
 
-window.addEventListener("load", displayTbody);
+const searchHandeler = (e) => {
+  let filterTodo = null;
+  const filter = e.target.dataset.filter;
+  switch (filter) {
+    case "pending":
+      filterTodo = todos.filter((todo) => todo.completed === true);
+      break;
+    case "completed":
+      filterTodo = todos.filter((todo) => todo.completed === false);
+      break;
+    default:
+      filterTodo = todos;
+      break;
+  }
+
+  displayTbody(filterTodo);
+};
+
+buttonAll.forEach((button) => {
+  button.addEventListener("click", searchHandeler);
+});
+
+window.addEventListener("load", () => displayTbody());
 deleteAll.addEventListener("click", deleteAllHandeler);
 buttonAdd.addEventListener("click", addHandeler);
 buttonEdit.addEventListener("click", btneditHandeler);

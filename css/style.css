@@ -121,8 +121,11 @@ table th:last-child {
   border-top-right-radius: 20px;
 }
 
+tbody td:first-child {
+  width: 25%;
+}
+
 table td {
-  /* width: 100%; */
   padding: 10px 20px;
   text-align: center;
   background-color: var(--color-task);
@@ -145,6 +148,7 @@ table td {
 
 .actions-button:nth-child(2) {
   background-color: var(--color-success);
+  width: 70px;
 }
 
 .actions-button:nth-child(3) {
